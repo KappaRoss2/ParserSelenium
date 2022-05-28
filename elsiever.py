@@ -1,3 +1,4 @@
+import selenium.webdriver.remote.webelement as WebElement
 import init_parser as ip
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -18,7 +19,7 @@ class elsiever(ip.parser):
         for post in self.posts:
             self.parse_block(post)
 
-    def parse_block(self, post):
+    def parse_block(self, post: WebElement):
         reference = post.find_element(By.TAG_NAME, "h2").find_element(By.TAG_NAME, "a").get_attribute("href")
 
         article = post.find_element(By.TAG_NAME, "h2").find_element(By.TAG_NAME, "a").text

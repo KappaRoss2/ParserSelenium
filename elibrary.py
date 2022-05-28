@@ -1,3 +1,4 @@
+import selenium.webdriver.remote.webelement as WebElement
 import init_parser as ip
 from selenium.webdriver.common.by import By
 import time
@@ -29,7 +30,7 @@ class elibrary(ip.parser):
             self.parse_block(post)
             self.driver.execute_script("window.scrollTo(0, window.scrollY + 60)")
 
-    def parse_block(self, post):
+    def parse_block(self, post: WebElement):
         tags = post.find_elements(By.TAG_NAME, "td")
 
         reference = tags[1].find_element(By.TAG_NAME, "a").get_attribute("href")

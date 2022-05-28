@@ -1,17 +1,20 @@
+import selenium.webdriver.remote.webelement as WebElement
 import init_parser as ip
 from selenium.webdriver.common.by import By
 
 
 class springer(ip.parser):
+
     def parse_page(self):
         self.driver.get(self.url)
         blocks = self.driver.find_element(By.CLASS_NAME, "content-item-list")
         self.posts = blocks.find_elements(By.TAG_NAME, "li")
         for post in self.posts:
+            print(type(post))
             self.parse_block(post)
 
 
-    def parse_block(self, post):
+    def parse_block(self, post: WebElement):
         reference = post.find_element(By.TAG_NAME, "h2").find_element(By.TAG_NAME, "a").get_attribute("href")
 
         article = post.find_element(By.TAG_NAME, "h2").find_element(By.TAG_NAME, "a").text

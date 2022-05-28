@@ -25,7 +25,7 @@ HEADERS = (
 
 class parser:
 
-    def __init__(self, url):
+    def __init__(self, url: str):
         options = webdriver.ChromeOptions()
         options.add_argument("start-maximized")
         # options.add_argument("--headless")
@@ -51,7 +51,7 @@ class parser:
             for item in self.result:
                 writer.writerow(item)
 
-    def run(self, filename):
+    def run(self, filename: str):
         self.filename = filename
         self.parse_page()
         self.save_results()
